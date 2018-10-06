@@ -2,21 +2,24 @@ import React from "react";
 import { RepoWrapper, MiscInfo } from "./styles";
 import get from "lodash/get";
 import { GoStar, GoPrimitiveDot } from "react-icons/go";
+import { Link } from "react-router-dom";
 
 class Repo extends React.PureComponent {
   render() {
     const {
-      repoURL,
       repoName,
       repoDescription,
       primaryLanguage,
-      stargazers
+      stargazers,
+      username
     } = this.props;
     const language = get(primaryLanguage, ["name"]);
     let starCount = get(stargazers, ["totalCount"]);
     return (
       <RepoWrapper>
-        <a href={repoURL}>{repoName}</a>
+        <Link to={`/${username}/${repoName}`}>
+          <span>{repoName}</span>
+        </Link>
         <p>{repoDescription}</p>
         <MiscInfo>
           {language && (

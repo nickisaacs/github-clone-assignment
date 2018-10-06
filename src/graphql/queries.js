@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 
 export const getUser = user => gql`
 {
-  user(login: ${user}) {
+  user(login: "${user}") {
     login
     name
     avatarUrl
@@ -29,4 +29,22 @@ export const getUser = user => gql`
     }
   }
 }
+`;
+
+export const getRepoContents = (user, repo) => gql`
+  {
+    user(login: "${user}") {
+      repository(name: "${repo}") {
+        object(expression: "master:") {
+          ... on Tree {
+            entries {
+              name
+              type
+              oid
+            }
+          }
+        }
+      }
+    }
+  }
 `;

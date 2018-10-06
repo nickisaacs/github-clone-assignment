@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const ProfileHomeWrapper = styled.div`
+  position: relative;
+  top: 24px;
   display: grid;
   grid-template-columns: 200px 800px;
   grid-column-gap: 24px;

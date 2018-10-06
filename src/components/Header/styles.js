@@ -4,7 +4,6 @@ export const HeaderWrapper = styled.div`
   background-color: #24292e;
   padding: 8px 16px 8px 16px;
   text-align: center;
-  margin-bottom: 24px;
 `;
 
 export const SearchBox = styled.input`

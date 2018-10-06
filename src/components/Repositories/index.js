@@ -6,7 +6,7 @@ import get from "lodash/get";
 class Repositories extends React.PureComponent {
   render() {
     const repos = get(this.props, ["repositories", "edges"]);
-
+    const { username } = this.props;
     return (
       <RepoListWrapper>
         <RepoTab>Repositories</RepoTab>
@@ -20,6 +20,7 @@ class Repositories extends React.PureComponent {
               repoDescription={node.description}
               stargazers={node.stargazers}
               primaryLanguage={node.primaryLanguage}
+              username={username}
             />
           ))}
         </RepoList>

@@ -48,7 +48,7 @@ const ProfileHome = ({ match }) => (
             username={user.login}
             bio={user.bio}
           />
-          <Repositories repositories={repositories} />
+          <Repositories repositories={repositories} username={user.login} />
         </ProfileHomeWrapper>
       );
     }}

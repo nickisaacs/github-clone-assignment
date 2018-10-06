@@ -21,7 +21,7 @@ class Header extends React.PureComponent {
           value={this.state.username}
           onChange={this.handleChange}
         />
-        <Link to={`/user/${this.state.username}`}>
+        <Link to={`/${this.state.username}`}>
           <Button>Go</Button>
         </Link>
       </HeaderWrapper>
