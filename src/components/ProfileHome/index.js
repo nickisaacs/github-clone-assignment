@@ -5,12 +5,36 @@ import Repositories from "../Repositories";
 import { ProfileHomeWrapper, CenterWrapper, ErrorMessage } from "./styles";
 import { Query } from "react-apollo";
 import get from "lodash/get";
-import { getUser } from "../../graphql/queries";
-import { FixedContainer } from "../Common";
+import { GET_USER_DATA } from "../../graphql/queries";
+import { FixedContainer, Button } from "../Common";
+
+const updateQuery = (previousResult, { fetchMoreResult }) => {
+  if (!fetchMoreResult) {
+    return previousResult;
+  }
+
+  return {
+    ...previousResult,
+    user: {
+      ...previousResult.user,
+      repositories: {
+        ...previousResult.user.repositories,
+        ...fetchMoreResult.user.repositories,
+        edges: [
+          ...previousResult.user.repositories.edges,
+          ...fetchMoreResult.user.repositories.edges
+        ]
+      }
+    }
+  };
+};
 
 const ProfileHome = ({ match }) => (
-  <Query query={getUser(match.params.username || "nickisaacs")}>
-    {({ data, loading, error }) => {
+  <Query
+    query={GET_USER_DATA}
+    variables={{ user: match.params.username || "nickisaacs" }}
+  >
+    {({ data, loading, error, fetchMore }) => {
       const user = get(data, ["user"]);
 
       if (loading) {
@@ -40,6 +64,10 @@ const ProfileHome = ({ match }) => (
       }
 
       const repositories = get(user, ["repositories"]);
+      const { hasNextPage, endCursor } = get(user, [
+        "repositories",
+        "pageInfo"
+      ]);
 
       return (
         <FixedContainer>
@@ -51,6 +79,20 @@ const ProfileHome = ({ match }) => (
               bio={user.bio}
             />
             <Repositories repositories={repositories} username={user.login} />
+            {hasNextPage && (
+              <Button
+                onClick={() =>
+                  fetchMore({
+                    variables: {
+                      cursor: endCursor
+                    },
+                    updateQuery
+                  })
+                }
+              >
+                More
+              </Button>
+            )}
           </ProfileHomeWrapper>
         </FixedContainer>
       );

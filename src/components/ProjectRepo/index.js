@@ -37,7 +37,8 @@ const ProjectRepo = ({ match }) => (
         if (error.networkError)
           return <ErrorMessage>Network Error</ErrorMessage>;
         if (error.graphQLErrors) {
-          return <ErrorMessage>{error.graphQLErrors}</ErrorMessage>;
+          console.log(error.graphQLErrors);
+          return <ErrorMessage>Could not open this Repo</ErrorMessage>;
         }
       }
 

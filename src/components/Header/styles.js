@@ -22,25 +22,3 @@ export const SearchBox = styled.input`
     outline: none;
   }
 `;
-
-export const Button = styled.button`
-  background-position: center;
-  background-color: #2ec852;
-  outline: none;
-  border: none;
-  padding: 8px;
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
-  cursor: pointer;
-  margin-left: 4px;
-  transition-duration: 0.4s;
-  &:hover {
-    background-color: #48e26c;
-  }
-  &:active {
-    background-color: #2ec852;
-    background-size: 100%;
-    transition: background 0s;
-  }
-`;

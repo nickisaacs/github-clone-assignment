@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { HeaderWrapper, SearchBox, Button } from "./styles";
+import { HeaderWrapper, SearchBox } from "./styles";
+import { Button } from "../Common";
 
 class Header extends React.PureComponent {
   state = {

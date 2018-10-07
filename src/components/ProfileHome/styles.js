@@ -6,9 +6,16 @@ export const ProfileHomeWrapper = styled.div`
   display: grid;
   grid-template-columns: 200px 800px;
   grid-column-gap: 24px;
+  margin-bottom: 48px;
   @media (max-width: 700px) {
     display: flex;
     flex-direction: column;
+  }
+  & > button {
+    grid-column: 2/2;
+    display: inline-block;
+    padding: 4px 16px;
+    margin: 16px auto;
   }
 `;
 
