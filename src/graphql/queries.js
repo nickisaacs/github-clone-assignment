@@ -35,6 +35,17 @@ export const getRepoContents = (user, repo) => gql`
   {
     user(login: "${user}") {
       repository(name: "${repo}") {
+        id
+        description
+        descriptionHTML
+        stargazers {
+          totalCount
+        }
+        viewerHasStarred
+        viewerSubscription
+        watchers {
+          totalCount
+        }
         object(expression: "master:") {
           ... on Tree {
             entries {

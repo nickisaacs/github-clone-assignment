@@ -19,6 +19,17 @@ export const RepoHeader = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const Container = styled.div`
+  max-width: 1012px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 0.8;
+`;
+
+export const BreadCrumbs = styled.div`
   & > a {
     color: #0366d6;
     text-decoration: none;
@@ -37,4 +48,14 @@ export const RepoHeader = styled.div`
     font-weight: 600;
     font-size: 16px;
   }
+`;
+
+export const RepoActions = styled.div`
+  display: flex;
+`;
+
+export const RepoDescription = styled.div`
+  max-width: 1012px;
+  margin: 16px auto;
+  color: #24292e;
 `;

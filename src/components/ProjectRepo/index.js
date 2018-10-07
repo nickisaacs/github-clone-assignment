@@ -1,8 +1,18 @@
 import React from "react";
 import ReactLoading from "react-loading";
+import Starrable from "./Starrable";
+import Watchable from "./Watchable";
 import { GoRepo } from "react-icons/go";
 import { CenterWrapper, ErrorMessage } from "../ProfileHome/styles";
-import { FileListWrapper, Files, RepoHeader } from "./styles";
+import {
+  FileListWrapper,
+  Files,
+  RepoHeader,
+  BreadCrumbs,
+  RepoActions,
+  Container,
+  RepoDescription
+} from "./styles";
 import RepoItem from "./RepoItem";
 import { Link } from "react-router-dom";
 import { Query } from "react-apollo";
@@ -35,6 +45,16 @@ const ProjectRepo = ({ match }) => (
       }
 
       const files = get(user, ["repository", "object", "entries"]);
+      const repoDetails = get(user, ["repository"]);
+
+      const {
+        descriptionHTML,
+        id,
+        viewerHasStarred,
+        viewerSubscription
+      } = repoDetails;
+      const stars = get(repoDetails, ["stargazers", "totalCount"]);
+      const isWatching = viewerSubscription === "SUBSCRIBED";
 
       const username = match.params.user;
       const reponame = match.params.repo;
@@ -42,10 +62,21 @@ const ProjectRepo = ({ match }) => (
       return (
         <>
           <RepoHeader>
-            <GoRepo />
-            <Link to={`/${username}`}>{username}</Link>/
-            <Link to={`/${username}/${reponame}`}>{reponame}</Link>
+            <Container>
+              <BreadCrumbs>
+                <GoRepo />
+                <Link to={`/${username}`}>{username}</Link>/
+                <Link to={`/${username}/${reponame}`}>{reponame}</Link>
+              </BreadCrumbs>
+              <RepoActions>
+                <Starrable isStarred={viewerHasStarred} stars={stars} id={id} />
+                <Watchable isWatching={isWatching} id={id} />
+              </RepoActions>
+            </Container>
           </RepoHeader>
+          <RepoDescription
+            dangerouslySetInnerHTML={{ __html: descriptionHTML }}
+          />
           <FileListWrapper>
             <Files>
               {files.map(file => (
