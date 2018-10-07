@@ -1,8 +1,6 @@
 ## Instructions
 
 You will need a github access token
-[Check here]
-
 Permissions needed for token: repo, notifications, user
 (https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)
 
