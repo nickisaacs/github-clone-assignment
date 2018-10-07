@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 import { Query } from "react-apollo";
 import get from "lodash/get";
 import { getRepoContents } from "../../graphql/queries";
+import { FixedContainer } from "../Common";
 
 const ProjectRepo = ({ match }) => (
   <Query query={getRepoContents(match.params.user, match.params.repo)}>
@@ -74,16 +75,18 @@ const ProjectRepo = ({ match }) => (
               </RepoActions>
             </Container>
           </RepoHeader>
-          <RepoDescription
-            dangerouslySetInnerHTML={{ __html: descriptionHTML }}
-          />
-          <FileListWrapper>
-            <Files>
-              {files.map(file => (
-                <RepoItem key={file.oid} name={file.name} type={file.type} />
-              ))}
-            </Files>
-          </FileListWrapper>
+          <FixedContainer>
+            <RepoDescription
+              dangerouslySetInnerHTML={{ __html: descriptionHTML }}
+            />
+            <FileListWrapper>
+              <Files>
+                {files.map(file => (
+                  <RepoItem key={file.oid} name={file.name} type={file.type} />
+                ))}
+              </Files>
+            </FileListWrapper>
+          </FixedContainer>
         </>
       );
     }}

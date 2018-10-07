@@ -17,4 +17,8 @@ export const RepoList = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 8px;
   grid-row-gap: 16px;
+  @media (max-width: 700px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;

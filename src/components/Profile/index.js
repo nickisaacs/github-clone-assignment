@@ -1,5 +1,10 @@
 import React from "react";
-import { ProfileWrapper, ProfileDetails, ProfileImage } from "./styles";
+import {
+  ProfileWrapper,
+  ProfileDetails,
+  ProfileImage,
+  ProfileBio
+} from "./styles";
 
 class Profile extends React.PureComponent {
   render() {
@@ -10,8 +15,8 @@ class Profile extends React.PureComponent {
         <ProfileDetails>
           <h2>{displayName}</h2>
           <p>{username}</p>
-          <p>{bio}</p>
         </ProfileDetails>
+        <ProfileBio>{bio}</ProfileBio>
       </ProfileWrapper>
     );
   }

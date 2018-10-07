@@ -6,8 +6,10 @@ export const ProfileHomeWrapper = styled.div`
   display: grid;
   grid-template-columns: 200px 800px;
   grid-column-gap: 24px;
-  max-width: 1012px;
-  margin: 0 auto;
+  @media (max-width: 700px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const CenterWrapper = styled.div`

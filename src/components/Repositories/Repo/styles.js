@@ -6,6 +6,11 @@ export const RepoWrapper = styled.div`
   grid-row-gap: 8px;
   padding: 16px;
   width: 359px;
+  @media (max-width: 700px) {
+    width: 80%;
+    margin: 0 auto;
+    padding: 8px 16px;
+  }
   border-radius: 3px;
   & > a {
     color: #0366d6;
@@ -15,15 +20,22 @@ export const RepoWrapper = styled.div`
   }
   & > a:hover {
     text-decoration: underline;
+    cursor: pointer;
   }
   & > p {
     font-size: 12px;
     color: #586069;
+    @media (max-width: 700px) {
+      display: none;
+    }
   }
 `;
 
 export const MiscInfo = styled.div`
   display: flex;
+  @media (max-width: 700px) {
+    display: none;
+  }
   & > span:first-of-type {
     font-size: 12px;
     color: #586069;

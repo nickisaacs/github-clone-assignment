@@ -8,28 +8,36 @@ export const FileListWrapper = styled.div`
 
 export const Files = styled.div`
   border: 1px solid #d1d5da;
-  max-width: 1012px;
-  margin: 0 auto;
-  flex-grow: 0.8;
+  flex-grow: 1;
 `;
 
 export const RepoHeader = styled.div`
-  height: 100px;
+  padding: 40px;
   background-color: #fafbfc;
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 700px) {
+    padding: 20px;
+  }
 `;
 
 export const Container = styled.div`
+  width: 80%;
   max-width: 1012px;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  flex-grow: 0.8;
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 `;
 
 export const BreadCrumbs = styled.div`
+  @media (max-width: 700px) {
+    margin-bottom: 24px;
+  }
   & > a {
     color: #0366d6;
     text-decoration: none;
@@ -55,7 +63,5 @@ export const RepoActions = styled.div`
 `;
 
 export const RepoDescription = styled.div`
-  max-width: 1012px;
-  margin: 16px auto;
   color: #24292e;
 `;

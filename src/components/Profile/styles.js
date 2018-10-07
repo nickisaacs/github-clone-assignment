@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-export const ProfileWrapper = styled.div``;
+export const ProfileWrapper = styled.div`
+  @media (max-width: 700px) {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+`;
 
 export const ProfileDetails = styled.div`
   & > h2 {
@@ -12,15 +17,23 @@ export const ProfileDetails = styled.div`
     margin: 0;
     color: #666;
   }
-  & > p:nth-of-type(2) {
-    font-size: 14px;
-    font-weight: 300;
-    color: #6a737d;
-  }
 `;
 
 export const ProfileImage = styled.img`
   border-radius: 10px;
   width: 200px;
   height: 200px;
+  @media (max-width: 700px) {
+    width: 100px;
+    height: 100px;
+  }
+`;
+
+export const ProfileBio = styled.p`
+  font-size: 14px;
+  font-weight: 300;
+  color: #6a737d;
+  @media (max-width: 700px) {
+    grid-column: 1/3;
+  }
 `;

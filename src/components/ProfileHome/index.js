@@ -6,6 +6,7 @@ import { ProfileHomeWrapper, CenterWrapper, ErrorMessage } from "./styles";
 import { Query } from "react-apollo";
 import get from "lodash/get";
 import { getUser } from "../../graphql/queries";
+import { FixedContainer } from "../Common";
 
 const ProfileHome = ({ match }) => (
   <Query query={getUser(match.params.username || "nickisaacs")}>
@@ -41,15 +42,17 @@ const ProfileHome = ({ match }) => (
       const repositories = get(user, ["repositories"]);
 
       return (
-        <ProfileHomeWrapper>
-          <Profile
-            image={user.avatarUrl}
-            displayName={user.name}
-            username={user.login}
-            bio={user.bio}
-          />
-          <Repositories repositories={repositories} username={user.login} />
-        </ProfileHomeWrapper>
+        <FixedContainer>
+          <ProfileHomeWrapper>
+            <Profile
+              image={user.avatarUrl}
+              displayName={user.name}
+              username={user.login}
+              bio={user.bio}
+            />
+            <Repositories repositories={repositories} username={user.login} />
+          </ProfileHomeWrapper>
+        </FixedContainer>
       );
     }}
   </Query>
